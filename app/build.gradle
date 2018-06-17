@@ -4,22 +4,14 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
 
-    def getVersionName = { ->
-        def stdout = new ByteArrayOutputStream()
-        exec {
-            commandLine 'git', 'describe', '--tags'
-            standardOutput = stdout
-        }
-        return stdout.toString().trim()
-    }
+
     defaultConfig {
         applicationId "ir.sinapps.sinapps.app"
         minSdkVersion 14
         targetSdkVersion 27
         versionCode 42
-        versionName getVersionName()
+        versionName "0.42"
         vectorDrawables.useSupportLibrary = true
-        resConfigs "ar", "ast", "cs", "de", "el", "en", "es", "eu", "fr", "fr-rBE", "in", "it", "ja", "kk", "ko", "nl", "pl", "pt", "pt-rBR", "ru", "sk", "uk", "zh", "zh-rTW"
     }
     buildTypes {
         release {
@@ -53,4 +45,5 @@ dependencies {
     implementation 'com.nothome:javaxdelta:2.0.1'
     implementation 'com.github.yeriomin:play-store-api:0.42'
     implementation 'eu.chainfire:libsuperuser:1.0.0.201608240809'
+    implementation 'ir.tapsell.sdk:tapsell-sdk-android:3.1.4'
 }

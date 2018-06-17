@@ -47,6 +47,7 @@ import java.util.Set;
 
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
+import ir.tapsell.sdk.Tapsell;
 
 import static ir.sinapps.sinapps.app.PreferenceUtil.PREFERENCE_USE_TOR;
 
@@ -94,7 +95,11 @@ public class YalpStoreApplication extends Application {
 
     @Override
     public void onCreate() {
-        if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+
+        Tapsell.initialize(getApplicationContext(), "cdnrniggmtqcdjnmcdhpsqnmnqbiqcqgdckbkeomqqrlrhpisokgepensnrcarjoatmaag");
+
+
+        if (BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().permitDiskReads().penaltyLog().build());
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
         }
@@ -112,11 +117,7 @@ public class YalpStoreApplication extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         registerDownloadReceiver();
         registerInstallReceiver();
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-            new FdroidListTask(this.getApplicationContext()).execute();
-        } else {
-            new FdroidListTask(this.getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-        }
+        new FdroidListTask(this.getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         wishlist.setPreferences(PreferenceUtil.getDefaultSharedPreferences(this));
     }
 
@@ -157,9 +158,6 @@ public class YalpStoreApplication extends Application {
     }
 
     public boolean isTv() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO) {
-            return false;
-        }
         int uiMode = getResources().getConfiguration().uiMode;
         return (uiMode & Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION
             || getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEVISION)
