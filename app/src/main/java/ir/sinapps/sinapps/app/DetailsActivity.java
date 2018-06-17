@@ -21,9 +21,11 @@ package ir.sinapps.sinapps.app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -34,6 +36,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.GooglePlayException;
+
+import ir.sinapps.sinapps.Config;
 import ir.sinapps.sinapps.app.fragment.ButtonCancel;
 import ir.sinapps.sinapps.app.fragment.ButtonDownload;
 import ir.sinapps.sinapps.app.fragment.ButtonInstall;
@@ -218,6 +222,32 @@ public class DetailsActivity extends YalpStoreActivity {
                 TextView availability = ((DetailsActivity) context).findViewById(R.id.availability);
                 availability.setVisibility(View.VISIBLE);
                 availability.setText(R.string.details_not_available_on_play_store);
+            }
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case (Config.TAPSELL_REQUEST_CODE): {
+                if (resultCode == Activity.RESULT_OK) {
+                    String adId = data.getStringExtra("adId");
+                    String zoneId = data.getStringExtra("zoneId");
+                    boolean completed = data.getBooleanExtra("completed", false);
+                    boolean rewarded = data.getBooleanExtra("rewarded", false);
+                    Log.e(getClass().getSimpleName(), "Activity Result isCompleted? " + completed + ", adId: " + adId + ", zoneId: " + zoneId);
+                    new AlertDialog.Builder(DetailsActivity.this)
+                            .setTitle("View for ad Id: " + adId + " in zone: " + zoneId + " was...")
+                            .setMessage("DONE!, completed? " + completed + ", rewarded? " + rewarded)
+                            .setNeutralButton("Nothing", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .show();
+                }
+                break;
             }
         }
     }

@@ -23,7 +23,6 @@ import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -31,11 +30,10 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.EditText;
 
+import info.guardianproject.netcipher.proxy.OrbotHelper;
 import ir.sinapps.sinapps.app.fragment.FilterMenu;
 import ir.sinapps.sinapps.app.view.DialogWrapper;
 import ir.sinapps.sinapps.app.view.DialogWrapperAbstract;
-
-import info.guardianproject.netcipher.proxy.OrbotHelper;
 
 import static ir.sinapps.sinapps.app.PreferenceUtil.PREFERENCE_USE_TOR;
 
@@ -62,9 +60,7 @@ public abstract class YalpStoreActivity extends BaseActivity {
     protected void onResume() {
         Log.v(getClass().getSimpleName(), "Resuming activity");
         super.onResume();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            invalidateOptionsMenu();
-        }
+        invalidateOptionsMenu();
         if (PreferenceUtil.getBoolean(this, PREFERENCE_USE_TOR)) {
             OrbotHelper.requestStartTor(this);
         }
@@ -190,4 +186,5 @@ public abstract class YalpStoreActivity extends BaseActivity {
         logout = true;
         finish();
     }
+
 }

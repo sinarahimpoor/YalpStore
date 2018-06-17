@@ -48,6 +48,7 @@ import java.util.Set;
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import ir.tapsell.sdk.Tapsell;
+import ir.tapsell.sdk.TapsellConfiguration;
 
 import static ir.sinapps.sinapps.app.PreferenceUtil.PREFERENCE_USE_TOR;
 
@@ -96,7 +97,14 @@ public class YalpStoreApplication extends Application {
     @Override
     public void onCreate() {
 
-        Tapsell.initialize(getApplicationContext(), "cdnrniggmtqcdjnmcdhpsqnmnqbiqcqgdckbkeomqqrlrhpisokgepensnrcarjoatmaag");
+
+        TapsellConfiguration config = new TapsellConfiguration(this);
+        config.setDebugMode(false);
+        config.setPermissionHandlerMode(TapsellConfiguration.PERMISSION_HANDLER_AUTO);
+        Tapsell.initialize(this, config, "cdnrniggmtqcdjnmcdhpsqnmnqbiqcqgdckbkeomqqrlrhpisokgepensnrcarjoatmaag");
+
+        Tapsell.setMaxAllowedBandwidthUsagePercentage(this, 100);
+
 
 
         if (BuildConfig.DEBUG) {

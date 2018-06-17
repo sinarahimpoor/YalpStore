@@ -21,6 +21,7 @@ package ir.sinapps.sinapps.app.fragment;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -42,6 +43,12 @@ import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.selfupdate.UpdaterFactory;
 import ir.sinapps.sinapps.app.task.playstore.DownloadLinkTask;
 import ir.sinapps.sinapps.app.task.playstore.PurchaseTask;
+import ir.tapsell.sdk.Tapsell;
+import ir.tapsell.sdk.TapsellAd;
+import ir.tapsell.sdk.TapsellAdRequestListener;
+import ir.tapsell.sdk.TapsellAdRequestOptions;
+import ir.tapsell.sdk.TapsellAdShowListener;
+import ir.tapsell.sdk.TapsellShowOptions;
 
 import java.io.File;
 
@@ -83,7 +90,58 @@ public class ButtonDownload extends Button {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
         } else if (permissionManager.checkPermission()) {
             Log.i(getClass().getSimpleName(), "Write permission granted");
-            download();
+
+            final TapsellShowOptions showOptions = new TapsellShowOptions();
+            showOptions.setBackDisabled(false);
+            showOptions.setImmersiveMode(true);
+            showOptions.setRotationMode(TapsellShowOptions.ROTATION_UNLOCKED);
+            showOptions.setShowDialog(true);
+            showOptions.setWarnBackPressedDialogMessage("سلام دوست من بک نزن");
+            showOptions.setWarnBackPressedDialogMessageTextColor(Color.RED);
+            showOptions.setWarnBackPressedDialogAssetTypefaceFileName("IranNastaliq.ttf");
+            showOptions.setWarnBackPressedDialogPositiveButtonText("ادامه بده");
+            showOptions.setWarnBackPressedDialogNegativeButtonText("ولم کن بزن بیرون");
+            showOptions.setWarnBackPressedDialogPositiveButtonBackgroundResId(R.drawable.button_background);
+            showOptions.setWarnBackPressedDialogNegativeButtonBackgroundResId(R.drawable.button_background);
+            showOptions.setWarnBackPressedDialogPositiveButtonTextColor(Color.RED);
+            showOptions.setWarnBackPressedDialogNegativeButtonTextColor(Color.GREEN);
+            showOptions.setWarnBackPressedDialogBackgroundResId(R.drawable.dialog_background);
+
+            Tapsell.requestAd(activity.getBaseContext(), "5b16957cfd8cec0001d4d11e", new TapsellAdRequestOptions(TapsellAdRequestOptions.CACHE_TYPE_STREAMED), new TapsellAdRequestListener() {
+                @Override
+                public void onError (String error) {
+                }
+
+                @Override
+                public void onAdAvailable (TapsellAd ad) {
+                    ad.show(activity.getBaseContext(), showOptions, new TapsellAdShowListener() {
+                        @Override
+                        public void onOpened (TapsellAd ad) {
+                            Log.e(getClass().getSimpleName(), "on ad opened");
+                        }
+                        @Override
+                        public void onClosed (TapsellAd ad) {
+                            Log.e(getClass().getSimpleName(), "on ad opened");
+                        }
+                    });
+                }
+
+                @Override
+                public void onNoAdAvailable () {
+                }
+
+                @Override
+                public void onNoNetwork () {
+                }
+
+                @Override
+                public void onExpiring (TapsellAd ad) {
+                }
+            });
+
+
+
+            //download();
             View buttonCancel = activity.findViewById(R.id.cancel);
             if (null != buttonCancel) {
                 buttonCancel.setVisibility(View.VISIBLE);
@@ -198,4 +256,5 @@ public class ButtonDownload extends Button {
             }
         }
     }
+
 }
