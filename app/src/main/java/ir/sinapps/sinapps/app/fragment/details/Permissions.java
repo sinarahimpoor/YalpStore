@@ -26,7 +26,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.fragment.Abstract;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.widget.ExpansionPanel;
@@ -56,7 +56,7 @@ public class Permissions extends Abstract {
         }
     }
 
-    public Permissions(YalpStoreActivity activity, App app) {
+    public Permissions(SinAppsModelActivity activity, App app) {
         super(activity, app);
         pm = activity.getPackageManager();
     }

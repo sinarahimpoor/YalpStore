@@ -23,8 +23,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
-import ir.sinapps.sinapps.app.YalpStoreApplication;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
+import ir.sinapps.sinapps.app.SinAppsApplication;
 import ir.sinapps.sinapps.app.fragment.Abstract;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.view.UriOnClickListener;
@@ -36,7 +36,7 @@ public class Fdroid extends Abstract {
     @Override
     public void draw() {
         TextView view = activity.findViewById(R.id.to_fdroid);
-        if (!YalpStoreApplication.fdroidPackageNames.contains(app.getPackageName())) {
+        if (!SinAppsApplication.fdroidPackageNames.contains(app.getPackageName())) {
             if (null != view) {
                 view.setVisibility(View.GONE);
             }
@@ -46,7 +46,7 @@ public class Fdroid extends Abstract {
         view.setOnClickListener(new UriOnClickListener(activity, FDROID_LINK + app.getPackageName()));
     }
 
-    public Fdroid(YalpStoreActivity activity, App app) {
+    public Fdroid(SinAppsModelActivity activity, App app) {
         super(activity, app);
     }
 }

@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 import ir.sinapps.sinapps.app.PreferenceUtil;
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.fragment.Abstract;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.task.ExodusTask;
@@ -61,7 +61,7 @@ public class Exodus extends Abstract {
         new ExodusTask((TextView) activity.findViewById(R.id.exodus), app.getPackageName()).execute();
     }
 
-    public Exodus(YalpStoreActivity activity, App app) {
+    public Exodus(SinAppsModelActivity activity, App app) {
         super(activity, app);
     }
 }

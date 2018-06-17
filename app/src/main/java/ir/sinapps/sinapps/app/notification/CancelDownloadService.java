@@ -31,7 +31,7 @@ import ir.sinapps.sinapps.app.DownloadManagerFactory;
 import ir.sinapps.sinapps.app.DownloadManagerInterface;
 import ir.sinapps.sinapps.app.DownloadState;
 import ir.sinapps.sinapps.app.Paths;
-import ir.sinapps.sinapps.app.YalpStoreApplication;
+import ir.sinapps.sinapps.app.SinAppsApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +70,7 @@ public class CancelDownloadService extends IntentService {
         if (TextUtils.isEmpty(packageName)) {
             return;
         }
-        ((YalpStoreApplication) getApplicationContext()).removePendingUpdate(packageName);
+        ((SinAppsApplication) getApplicationContext()).removePendingUpdate(packageName);
         DownloadState state = DownloadState.get(packageName);
         downloadIds.addAll(state.getDownloadIds());
         for (long id: downloadIds) {

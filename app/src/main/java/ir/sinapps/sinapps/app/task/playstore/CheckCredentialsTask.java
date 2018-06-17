@@ -36,7 +36,7 @@ import ir.sinapps.sinapps.app.FirstLaunchChecker;
 import ir.sinapps.sinapps.app.PreferenceActivity;
 import ir.sinapps.sinapps.app.PreferenceUtil;
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.view.CredentialsDialogBuilder;
 import ir.sinapps.sinapps.app.view.DialogWrapper;
 import ir.sinapps.sinapps.app.view.DialogWrapperAbstract;
@@ -111,7 +111,7 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
     }
 
     private DialogWrapperAbstract getTwoFactorAuthDialog() {
-        DialogWrapper builder = new DialogWrapper((YalpStoreActivity) context);
+        DialogWrapper builder = new DialogWrapper((SinAppsModelActivity) context);
         return builder
             .setMessage(R.string.dialog_message_two_factor)
             .setTitle(R.string.dialog_title_two_factor)

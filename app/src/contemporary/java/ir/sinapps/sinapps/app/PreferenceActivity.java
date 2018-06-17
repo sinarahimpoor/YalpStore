@@ -24,11 +24,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.support.annotation.Nullable;
 
-import ir.sinapps.sinapps.app.R;
-
 import ir.sinapps.sinapps.app.fragment.preference.PreferenceFragment;
 
-public class PreferenceActivity extends YalpStoreActivity {
+public class PreferenceActivity extends SinAppsModelActivity {
 
     private PreferenceFragment fragment;
 

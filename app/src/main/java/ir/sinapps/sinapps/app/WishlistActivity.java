@@ -102,7 +102,7 @@ public class WishlistActivity extends AppListActivity {
                 && apps.isEmpty()
                 && PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
             ) {
-                for (BulkDetailsEntry details: api.bulkDetails(new ArrayList<>(YalpStoreApplication.wishlist)).getEntryList()) {
+                for (BulkDetailsEntry details: api.bulkDetails(new ArrayList<>(SinAppsApplication.wishlist)).getEntryList()) {
                     if (!details.hasDoc()) {
                         continue;
                     }

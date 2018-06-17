@@ -38,7 +38,7 @@ import ir.sinapps.sinapps.app.PreferenceUtil;
 import ir.sinapps.sinapps.app.R;
 import ir.sinapps.sinapps.app.SpoofDeviceManager;
 import ir.sinapps.sinapps.app.Util;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.bugreport.BugReportService;
 import ir.sinapps.sinapps.app.view.DialogWrapper;
 import ir.sinapps.sinapps.app.view.DialogWrapperAbstract;
@@ -159,7 +159,7 @@ public class Device extends List {
 
     private void finishAll() {
         new PlayStoreApiAuthenticator(activity.getApplicationContext()).logout();
-        YalpStoreActivity.cascadeFinish();
+        SinAppsModelActivity.cascadeFinish();
         activity.finish();
     }
 

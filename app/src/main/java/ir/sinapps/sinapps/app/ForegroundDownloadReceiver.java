@@ -27,12 +27,12 @@ import java.lang.ref.WeakReference;
 
 abstract class ForegroundDownloadReceiver extends DownloadReceiver {
 
-    protected WeakReference<YalpStoreActivity> activityRef = new WeakReference<>(null);
+    protected WeakReference<SinAppsModelActivity> activityRef = new WeakReference<>(null);
 
     abstract protected void cleanup();
     abstract protected void draw();
 
-    public ForegroundDownloadReceiver(YalpStoreActivity activity) {
+    public ForegroundDownloadReceiver(SinAppsModelActivity activity) {
         this.activityRef = new WeakReference<>(activity);
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_DELTA_PATCHING_COMPLETE);
@@ -44,7 +44,7 @@ abstract class ForegroundDownloadReceiver extends DownloadReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        YalpStoreActivity activity = activityRef.get();
+        SinAppsModelActivity activity = activityRef.get();
         if (null == activity || !ContextUtil.isAlive(activity)) {
             return;
         }

@@ -22,7 +22,7 @@ package ir.sinapps.sinapps.app.task.playstore;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import ir.sinapps.sinapps.app.PlayStoreApiAuthenticator;
 import ir.sinapps.sinapps.app.PreferenceUtil;
-import ir.sinapps.sinapps.app.YalpStoreApplication;
+import ir.sinapps.sinapps.app.SinAppsApplication;
 
 import java.io.IOException;
 
@@ -47,18 +47,18 @@ public class WishlistToggleTask extends PlayStorePayloadTask<Boolean> implements
     @Override
     protected Boolean getResult(GooglePlayAPI api, String... arguments) throws IOException {
         boolean builtInAccount = PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL);
-        if (YalpStoreApplication.wishlist.contains(packageName)) {
+        if (SinAppsApplication.wishlist.contains(packageName)) {
             if (!builtInAccount) {
                 api.removeWishlistApp(packageName);
             }
-            YalpStoreApplication.wishlist.remove(packageName);
+            SinAppsApplication.wishlist.remove(packageName);
         } else {
             if (!builtInAccount) {
                 api.addWishlistApp(packageName);
             }
-            YalpStoreApplication.wishlist.add(packageName);
+            SinAppsApplication.wishlist.add(packageName);
         }
-        YalpStoreApplication.wishlist.save();
+        SinAppsApplication.wishlist.save();
         return true;
     }
 }

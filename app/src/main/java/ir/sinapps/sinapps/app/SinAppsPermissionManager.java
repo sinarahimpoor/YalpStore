@@ -27,13 +27,13 @@ import android.os.Build;
 
 import java.lang.ref.WeakReference;
 
-public class YalpStorePermissionManager {
+public class SinAppsPermissionManager {
 
     private static final int PERMISSIONS_REQUEST_CODE = 384;
 
     private WeakReference<Activity> activityRef = new WeakReference<>(null);
 
-    public YalpStorePermissionManager(Activity activity) {
+    public SinAppsPermissionManager(Activity activity) {
         this.activityRef = new WeakReference<>(activity);
     }
 

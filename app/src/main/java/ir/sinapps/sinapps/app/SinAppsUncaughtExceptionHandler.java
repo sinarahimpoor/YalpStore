@@ -24,11 +24,11 @@ import android.content.Intent;
 
 import ir.sinapps.sinapps.app.bugreport.BugReportService;
 
-class YalpStoreUncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
+class SinAppsUncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
 
     private Context context;
 
-    public YalpStoreUncaughtExceptionHandler(Context context) {
+    public SinAppsUncaughtExceptionHandler(Context context) {
         this.context = context;
     }
 

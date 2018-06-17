@@ -25,7 +25,7 @@ import ir.sinapps.sinapps.app.view.AppBadge;
 
 public class DownloadProgressUpdaterFactory {
 
-    static public DownloadProgressUpdater get(YalpStoreActivity activity, String packageName) {
+    static public DownloadProgressUpdater get(SinAppsModelActivity activity, String packageName) {
         if (activity instanceof DetailsActivity) {
             return get((DetailsActivity) activity, packageName);
         } else if (activity instanceof AppListActivity) {

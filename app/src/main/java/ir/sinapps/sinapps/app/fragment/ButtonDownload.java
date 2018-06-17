@@ -37,8 +37,8 @@ import ir.sinapps.sinapps.app.Paths;
 import ir.sinapps.sinapps.app.PlayStoreApiAuthenticator;
 import ir.sinapps.sinapps.app.PreferenceUtil;
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
-import ir.sinapps.sinapps.app.YalpStorePermissionManager;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
+import ir.sinapps.sinapps.app.SinAppsPermissionManager;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.selfupdate.UpdaterFactory;
 import ir.sinapps.sinapps.app.task.playstore.DownloadLinkTask;
@@ -48,6 +48,7 @@ import ir.tapsell.sdk.TapsellAd;
 import ir.tapsell.sdk.TapsellAdRequestListener;
 import ir.tapsell.sdk.TapsellAdRequestOptions;
 import ir.tapsell.sdk.TapsellAdShowListener;
+import ir.tapsell.sdk.TapsellRewardListener;
 import ir.tapsell.sdk.TapsellShowOptions;
 
 import java.io.File;
@@ -57,7 +58,7 @@ import static ir.sinapps.sinapps.app.DownloadState.TriggeredBy.MANUAL_DOWNLOAD_B
 
 public class ButtonDownload extends Button {
 
-    public ButtonDownload(YalpStoreActivity activity, App app) {
+    public ButtonDownload(SinAppsModelActivity activity, App app) {
         super(activity, app);
     }
 
@@ -85,7 +86,7 @@ public class ButtonDownload extends Button {
     }
 
     public void checkAndDownload() {
-        YalpStorePermissionManager permissionManager = new YalpStorePermissionManager(activity);
+        SinAppsPermissionManager permissionManager = new SinAppsPermissionManager(activity);
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
         } else if (permissionManager.checkPermission()) {
@@ -115,6 +116,7 @@ public class ButtonDownload extends Button {
                 @Override
                 public void onAdAvailable (TapsellAd ad) {
                     ad.show(activity.getBaseContext(), showOptions, new TapsellAdShowListener() {
+
                         @Override
                         public void onOpened (TapsellAd ad) {
                             Log.e(getClass().getSimpleName(), "on ad opened");
@@ -140,6 +142,18 @@ public class ButtonDownload extends Button {
             });
 
 
+            Tapsell.setRewardListener(new TapsellRewardListener() {
+                @Override
+                public void onAdShowFinished(TapsellAd ad, boolean completed) {
+                    // store user reward if ad.isRewardedAd() and completed is true
+                    Log.i("onAdShowFinished", String.valueOf(completed));
+                    if(completed){
+
+                        download();
+                    }
+
+                }
+            });
 
             //download();
             View buttonCancel = activity.findViewById(R.id.cancel);
@@ -181,7 +195,7 @@ public class ButtonDownload extends Button {
                 AndroidAppDeliveryData.newBuilder().setDownloadUrl(UpdaterFactory.get(activity).getUrlString(app.getVersionCode())).build()
             );
         } else {
-            boolean writePermission = new YalpStorePermissionManager(activity).checkPermission();
+            boolean writePermission = new SinAppsPermissionManager(activity).checkPermission();
             if (writePermission && prepareDownloadsDir()) {
                 getPurchaseTask().execute();
             } else {

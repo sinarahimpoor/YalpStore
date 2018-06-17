@@ -33,7 +33,7 @@ public class InstallerFactory {
             case PreferenceUtil.INSTALLATION_METHOD_DEFAULT:
                 return new InstallerDefault(context);
             default:
-                return YalpStorePermissionManager.hasInstallPermission(context)
+                return SinAppsPermissionManager.hasInstallPermission(context)
                     ? new InstallerPrivileged(context)
                     : new InstallerDefault(context)
                 ;

@@ -53,7 +53,7 @@ public class UpdateAllReceiver extends BroadcastReceiver {
             return;
         }
         if (intent.getAction().equals(ACTION_ALL_UPDATES_COMPLETE)) {
-            ((YalpStoreApplication) activity.getApplication()).setBackgroundUpdating(false);
+            ((SinAppsApplication) activity.getApplication()).setBackgroundUpdating(false);
             initButton();
         } else if (intent.getAction().equals(ACTION_APP_UPDATE_COMPLETE)) {
             processAppUpdate(

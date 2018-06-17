@@ -41,6 +41,10 @@ public class InstalledAppsActivity extends AppListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(R.string.activity_title_updates_and_other_apps);
+
+
+
+
         new InstalledAppsMainButtonAdapter(findViewById(R.id.main_button)).init();
         new BitmapCacheCleanupTask(this.getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         new OldApkCleanupTask(this.getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);

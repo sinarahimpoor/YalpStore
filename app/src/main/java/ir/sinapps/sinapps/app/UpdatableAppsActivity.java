@@ -75,7 +75,7 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
+        if (SinAppsPermissionManager.isGranted(requestCode, permissions, grantResults)) {
             launchUpdateAll();
         }
     }
@@ -121,7 +121,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     public void launchUpdateAll() {
-        ((YalpStoreApplication) getApplicationContext()).setBackgroundUpdating(true);
+        ((SinAppsApplication) getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
         new UpdatableAppsButtonAdapter(findViewById(R.id.main_button)).setUpdating();
     }

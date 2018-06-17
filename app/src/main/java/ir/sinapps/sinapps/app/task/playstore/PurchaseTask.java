@@ -38,8 +38,8 @@ import ir.sinapps.sinapps.app.DownloadState;
 import ir.sinapps.sinapps.app.Downloader;
 import ir.sinapps.sinapps.app.NotPurchasedException;
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
-import ir.sinapps.sinapps.app.YalpStorePermissionManager;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
+import ir.sinapps.sinapps.app.SinAppsPermissionManager;
 import ir.sinapps.sinapps.app.notification.CancelDownloadService;
 import ir.sinapps.sinapps.app.view.PurchaseDialogBuilder;
 
@@ -84,15 +84,15 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
             && context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
         ) {
             Log.e(getClass().getSimpleName(), app.getPackageName() + " needs obb files, so we need WRITE_EXTERNAL_STORAGE permission even if internal storage is used for apks");
-            new YalpStorePermissionManager((Activity) context).requestPermission();
+            new SinAppsPermissionManager((Activity) context).requestPermission();
             return deliveryData;
         }
         Downloader downloader = new Downloader(context);
         try {
             if (downloader.enoughSpace(deliveryData)) {
                 downloader.download(app, deliveryData);
-                if (context instanceof YalpStoreActivity) {
-                    DownloadProgressUpdater progressUpdater = DownloadProgressUpdaterFactory.get((YalpStoreActivity) context, app.getPackageName());
+                if (context instanceof SinAppsModelActivity) {
+                    DownloadProgressUpdater progressUpdater = DownloadProgressUpdaterFactory.get((SinAppsModelActivity) context, app.getPackageName());
                     if (null != progressUpdater) {
                         progressUpdater.execute(UPDATE_INTERVAL);
                     }

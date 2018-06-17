@@ -31,7 +31,7 @@ import android.widget.Toast;
 
 import ir.sinapps.sinapps.app.bugreport.BugReportSenderEmail;
 
-public class AboutActivity extends YalpStoreActivity {
+public class AboutActivity extends SinAppsModelActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

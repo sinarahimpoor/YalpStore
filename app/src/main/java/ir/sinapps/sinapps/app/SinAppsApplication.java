@@ -52,7 +52,7 @@ import ir.tapsell.sdk.TapsellConfiguration;
 
 import static ir.sinapps.sinapps.app.PreferenceUtil.PREFERENCE_USE_TOR;
 
-public class YalpStoreApplication extends Application {
+public class SinAppsApplication extends Application {
 
     public static final Set<String> fdroidPackageNames = new HashSet<>();
     public static final SharedPreferencesCachedSet wishlist = new SharedPreferencesCachedSet("wishlist");
@@ -122,7 +122,7 @@ public class YalpStoreApplication extends Application {
         PreferenceUtil.prefillInstallationMethod(this);
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         initNetcipher();
-        Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
+        Thread.setDefaultUncaughtExceptionHandler(new SinAppsUncaughtExceptionHandler(getApplicationContext()));
         registerDownloadReceiver();
         registerInstallReceiver();
         new FdroidListTask(this.getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -175,9 +175,9 @@ public class YalpStoreApplication extends Application {
 
     private static class ProxyOnChangeListener implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-        YalpStoreApplication application;
+        SinAppsApplication application;
 
-        public ProxyOnChangeListener(YalpStoreApplication application) {
+        public ProxyOnChangeListener(SinAppsApplication application) {
             this.application = application;
         }
 

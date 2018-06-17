@@ -24,7 +24,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.fragment.Abstract;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.view.UriOnClickListener;
@@ -45,7 +45,7 @@ public class InstantAppLink extends Abstract {
         instantAppView.setOnClickListener(new UriOnClickListener(activity, app.getInstantAppLink()));
     }
 
-    public InstantAppLink(YalpStoreActivity activity, App app) {
+    public InstantAppLink(SinAppsModelActivity activity, App app) {
         super(activity, app);
     }
 }

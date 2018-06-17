@@ -29,7 +29,7 @@ import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.task.playstore.DetailsTask;
 import ir.sinapps.sinapps.app.task.playstore.PurchaseTask;
 
-public class DirectDownloadActivity extends YalpStoreActivity {
+public class DirectDownloadActivity extends SinAppsModelActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             finish();
             return;
         }
-        if (!new YalpStorePermissionManager(this).checkPermission()) {
+        if (!new SinAppsPermissionManager(this).checkPermission()) {
             startActivity(DetailsActivity.getDetailsIntent(this, packageName));
             finish();
             return;

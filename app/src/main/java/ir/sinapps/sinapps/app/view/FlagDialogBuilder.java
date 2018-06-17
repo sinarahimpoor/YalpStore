@@ -26,7 +26,7 @@ import android.widget.EditText;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.task.playstore.FlagTask;
 
@@ -44,10 +44,10 @@ public class FlagDialogBuilder {
     };
     static private final String[] reasonLabels = new String[8];
 
-    private YalpStoreActivity activity;
+    private SinAppsModelActivity activity;
     private App app;
 
-    public FlagDialogBuilder setActivity(YalpStoreActivity activity) {
+    public FlagDialogBuilder setActivity(SinAppsModelActivity activity) {
         this.activity = activity;
         reasonLabels[0] = activity.getString(R.string.flag_sexual_content);
         reasonLabels[1] = activity.getString(R.string.flag_graphic_violence);

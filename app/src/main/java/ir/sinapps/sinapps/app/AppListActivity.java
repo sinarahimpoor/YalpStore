@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-abstract public class AppListActivity extends YalpStoreActivity {
+abstract public class AppListActivity extends SinAppsModelActivity {
 
     protected ListView listView;
     protected Map<String, ListItem> listItems = new HashMap<>();
@@ -107,7 +107,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
+        if (SinAppsPermissionManager.isGranted(requestCode, permissions, grantResults)) {
             new ButtonDownload(this, DetailsActivity.app).download();
         }
     }

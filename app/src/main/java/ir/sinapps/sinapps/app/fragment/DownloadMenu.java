@@ -32,8 +32,8 @@ import ir.sinapps.sinapps.app.BuildConfig;
 import ir.sinapps.sinapps.app.ManualDownloadActivity;
 import ir.sinapps.sinapps.app.R;
 import ir.sinapps.sinapps.app.VersionIgnoreManager;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
-import ir.sinapps.sinapps.app.YalpStoreApplication;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
+import ir.sinapps.sinapps.app.SinAppsApplication;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.task.CheckShellTask;
 import ir.sinapps.sinapps.app.task.ConvertToNormalTask;
@@ -45,7 +45,7 @@ import ir.sinapps.sinapps.app.view.FlagDialogBuilder;
 
 public class DownloadMenu extends Abstract {
 
-    public DownloadMenu(YalpStoreActivity activity, App app) {
+    public DownloadMenu(SinAppsModelActivity activity, App app) {
         super(activity, app);
     }
 
@@ -72,8 +72,8 @@ public class DownloadMenu extends Abstract {
 
     public void onCreateOptionsMenu(Menu menu) {
         if (!app.isInstalled()) {
-            show(menu, R.id.action_wishlist_add, !YalpStoreApplication.wishlist.contains(app.getPackageName()));
-            show(menu, R.id.action_wishlist_remove, YalpStoreApplication.wishlist.contains(app.getPackageName()));
+            show(menu, R.id.action_wishlist_add, !SinAppsApplication.wishlist.contains(app.getPackageName()));
+            show(menu, R.id.action_wishlist_remove, SinAppsApplication.wishlist.contains(app.getPackageName()));
         } else {
             BlackWhiteListManager manager = new BlackWhiteListManager(activity);
             boolean isContained = manager.contains(app.getPackageName());

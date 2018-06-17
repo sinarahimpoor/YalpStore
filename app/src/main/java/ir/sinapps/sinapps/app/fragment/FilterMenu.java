@@ -31,7 +31,7 @@ import ir.sinapps.sinapps.app.CategoryManager;
 import ir.sinapps.sinapps.app.PreferenceUtil;
 import ir.sinapps.sinapps.app.R;
 import ir.sinapps.sinapps.app.Util;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.model.Filter;
 import ir.sinapps.sinapps.app.view.DialogWrapper;
 import ir.sinapps.sinapps.app.view.DialogWrapperAbstract;
@@ -53,9 +53,9 @@ public class FilterMenu {
     static private final Map<Float, String> ratingLabels = new HashMap<>();
     static private final Map<Integer, String> downloadsLabels = new HashMap<>();
 
-    private YalpStoreActivity activity;
+    private SinAppsModelActivity activity;
 
-    public FilterMenu(YalpStoreActivity activity) {
+    public FilterMenu(SinAppsModelActivity activity) {
         this.activity = activity;
         String[] ratingValues = activity.getResources().getStringArray(R.array.filterRatingValues);
         for (int i = 0; i < ratingValues.length; i++) {

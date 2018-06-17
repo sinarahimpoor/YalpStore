@@ -104,7 +104,7 @@ public abstract class InstallerAbstract {
         }
         if (!new ApkSignatureVerifier(context).match(app.getPackageName(), apkPath)) {
             Log.w(getClass().getSimpleName(), "Signature mismatch for " + app.getPackageName());
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+            ((SinAppsApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             if (ContextUtil.isAlive(context)) {
                 getSignatureMismatchDialog(app).show();
             } else {
@@ -120,7 +120,7 @@ public abstract class InstallerAbstract {
                 || !MessageDigest.isEqual(downloadedFileChecksum, existingFileChecksum)
             ) {
                 Log.e(getClass().getSimpleName(), "Checksums of the existing file and the originally downloaded file are not the same for " + app.getPackageName());
-                ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+                ((SinAppsApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
                 notifyAndToast(
                     R.string.notification_file_verification_failed,
                     R.string.notification_file_verification_failed,

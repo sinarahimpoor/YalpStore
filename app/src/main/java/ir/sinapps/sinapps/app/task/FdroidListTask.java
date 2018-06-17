@@ -26,7 +26,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import ir.sinapps.sinapps.app.Util;
-import ir.sinapps.sinapps.app.YalpStoreApplication;
+import ir.sinapps.sinapps.app.SinAppsApplication;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -63,7 +63,7 @@ public class FdroidListTask extends AsyncTask<Void, Void, Void> {
             downloadXml();
         }
         parseXml();
-        Log.i(getClass().getSimpleName(), "F-Droid app list size: " + YalpStoreApplication.fdroidPackageNames.size());
+        Log.i(getClass().getSimpleName(), "F-Droid app list size: " + SinAppsApplication.fdroidPackageNames.size());
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
             localXmlFile.delete();
         }
@@ -104,7 +104,7 @@ public class FdroidListTask extends AsyncTask<Void, Void, Void> {
             super.startElement(uri, localName, qName, attributes);
             String packageName = attributes.getValue("id");
             if (qName.equalsIgnoreCase("application") && !TextUtils.isEmpty(packageName)) {
-                YalpStoreApplication.fdroidPackageNames.add(packageName);
+                SinAppsApplication.fdroidPackageNames.add(packageName);
             }
         }
     }

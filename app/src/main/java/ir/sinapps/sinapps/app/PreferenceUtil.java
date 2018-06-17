@@ -136,7 +136,7 @@ public class PreferenceUtil {
     static public void prefillInstallationMethod(Context context) {
         SharedPreferences preferences = getDefaultSharedPreferences(context);
         if (TextUtils.isEmpty(preferences.getString(PreferenceUtil.PREFERENCE_INSTALLATION_METHOD, ""))
-            && YalpStorePermissionManager.hasInstallPermission(context)
+            && SinAppsPermissionManager.hasInstallPermission(context)
         ) {
             preferences.edit().putString(PreferenceUtil.PREFERENCE_INSTALLATION_METHOD, PreferenceUtil.INSTALLATION_METHOD_PRIVILEGED).commit();
         }

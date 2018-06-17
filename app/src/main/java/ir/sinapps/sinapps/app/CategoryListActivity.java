@@ -26,7 +26,7 @@ import ir.sinapps.sinapps.app.task.playstore.CategoryListTask;
 import ir.sinapps.sinapps.app.task.playstore.CategoryTask;
 
 
-public class CategoryListActivity extends YalpStoreActivity {
+public class CategoryListActivity extends SinAppsModelActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

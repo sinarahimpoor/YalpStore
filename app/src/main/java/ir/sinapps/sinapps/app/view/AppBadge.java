@@ -29,7 +29,7 @@ import android.widget.TextView;
 import ir.sinapps.sinapps.app.DetailsActivity;
 import ir.sinapps.sinapps.app.ListItemDownloadProgressUpdater;
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.fragment.ButtonCancel;
 import ir.sinapps.sinapps.app.fragment.ButtonDownload;
 import ir.sinapps.sinapps.app.model.App;
@@ -100,8 +100,8 @@ public abstract class AppBadge extends ListItem {
         if (null == view) {
             return;
         }
-        final ButtonDownload buttonDownload = new ButtonDownload((YalpStoreActivity) view.getContext(), app);
-        if (new ButtonCancel((YalpStoreActivity) view.getContext(), app).shouldBeVisible()) {
+        final ButtonDownload buttonDownload = new ButtonDownload((SinAppsModelActivity) view.getContext(), app);
+        if (new ButtonCancel((SinAppsModelActivity) view.getContext(), app).shouldBeVisible()) {
             enableCancelButton();
             new ListItemDownloadProgressUpdater(app.getPackageName(), AppBadge.this).execute(PurchaseTask.UPDATE_INTERVAL);
         } else if (buttonDownload.shouldBeVisible()) {

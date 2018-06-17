@@ -37,19 +37,19 @@ import ir.sinapps.sinapps.app.view.DialogWrapperAbstract;
 
 import static ir.sinapps.sinapps.app.PreferenceUtil.PREFERENCE_USE_TOR;
 
-public abstract class YalpStoreActivity extends BaseActivity {
+public abstract class SinAppsModelActivity extends BaseActivity {
 
     static protected boolean logout = false;
 
     public static void cascadeFinish() {
-        YalpStoreActivity.logout = true;
+        SinAppsModelActivity.logout = true;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.v(getClass().getSimpleName(), "Starting activity");
         logout = false;
-        if (((YalpStoreApplication) getApplication()).isTv()) {
+        if (((SinAppsApplication) getApplication()).isTv()) {
             requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
         }
         new ThemeManager().setTheme(this);

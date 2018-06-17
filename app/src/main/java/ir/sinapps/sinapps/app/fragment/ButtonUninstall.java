@@ -24,14 +24,14 @@ import android.net.Uri;
 import android.view.View;
 
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.task.CheckShellTask;
 import ir.sinapps.sinapps.app.task.UninstallSystemAppTask;
 
 public class ButtonUninstall extends Button {
 
-    public ButtonUninstall(YalpStoreActivity activity, App app) {
+    public ButtonUninstall(SinAppsModelActivity activity, App app) {
         super(activity, app);
     }
 

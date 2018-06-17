@@ -22,14 +22,14 @@ package ir.sinapps.sinapps.app.fragment;
 import android.content.pm.PackageManager;
 import android.view.View;
 
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.model.App;
 
 public abstract class Button extends Abstract {
 
     protected View button;
 
-    public Button(YalpStoreActivity activity, App app) {
+    public Button(SinAppsModelActivity activity, App app) {
         super(activity, app);
         this.button = getButton();
     }

@@ -48,12 +48,15 @@ import ir.sinapps.sinapps.app.fragment.details.AllFragments;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.task.playstore.CloneableTask;
 import ir.sinapps.sinapps.app.task.playstore.DetailsTask;
+import ir.tapsell.sdk.Tapsell;
+import ir.tapsell.sdk.TapsellAd;
+import ir.tapsell.sdk.TapsellRewardListener;
 
 import java.io.IOException;
 
 import static ir.sinapps.sinapps.app.task.playstore.PurchaseTask.UPDATE_INTERVAL;
 
-public class DetailsActivity extends YalpStoreActivity {
+public class DetailsActivity extends SinAppsModelActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
@@ -102,6 +105,9 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     protected void onResume() {
         redrawButtons();
+
+
+
         super.onResume();
     }
 
@@ -136,7 +142,7 @@ public class DetailsActivity extends YalpStoreActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults) && null != app) {
+        if (SinAppsPermissionManager.isGranted(requestCode, permissions, grantResults) && null != app) {
             redrawButtons();
             new ButtonDownload(this, app).download();
         }
@@ -225,30 +231,30 @@ public class DetailsActivity extends YalpStoreActivity {
             }
         }
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case (Config.TAPSELL_REQUEST_CODE): {
-                if (resultCode == Activity.RESULT_OK) {
-                    String adId = data.getStringExtra("adId");
-                    String zoneId = data.getStringExtra("zoneId");
-                    boolean completed = data.getBooleanExtra("completed", false);
-                    boolean rewarded = data.getBooleanExtra("rewarded", false);
-                    Log.e(getClass().getSimpleName(), "Activity Result isCompleted? " + completed + ", adId: " + adId + ", zoneId: " + zoneId);
-                    new AlertDialog.Builder(DetailsActivity.this)
-                            .setTitle("View for ad Id: " + adId + " in zone: " + zoneId + " was...")
-                            .setMessage("DONE!, completed? " + completed + ", rewarded? " + rewarded)
-                            .setNeutralButton("Nothing", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            })
-                            .show();
-                }
-                break;
-            }
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        switch (requestCode) {
+//            case (Config.TAPSELL_REQUEST_CODE): {
+//                if (resultCode == Activity.RESULT_OK) {
+//                    String adId = data.getStringExtra("adId");
+//                    String zoneId = data.getStringExtra("zoneId");
+//                    boolean completed = data.getBooleanExtra("completed", false);
+//                    boolean rewarded = data.getBooleanExtra("rewarded", false);
+//                    Log.e(getClass().getSimpleName(), "Activity Result isCompleted? " + completed + ", adId: " + adId + ", zoneId: " + zoneId);
+//                    new AlertDialog.Builder(DetailsActivity.this)
+//                            .setTitle("View for ad Id: " + adId + " in zone: " + zoneId + " was...")
+//                            .setMessage("DONE!, completed? " + completed + ", rewarded? " + rewarded)
+//                            .setNeutralButton("Nothing", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    dialog.dismiss();
+//                                }
+//                            })
+//                            .show();
+//                }
+//                break;
+//            }
+//        }
+//    }
 }

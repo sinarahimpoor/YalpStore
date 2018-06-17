@@ -22,8 +22,8 @@ package ir.sinapps.sinapps.app.view;
 import android.view.View;
 
 import ir.sinapps.sinapps.app.UpdatableAppsActivity;
-import ir.sinapps.sinapps.app.YalpStoreApplication;
-import ir.sinapps.sinapps.app.YalpStorePermissionManager;
+import ir.sinapps.sinapps.app.SinAppsApplication;
+import ir.sinapps.sinapps.app.SinAppsPermissionManager;
 
 public class UpdatableAppsButtonAdapterAbstract extends ButtonAdapter {
 
@@ -35,7 +35,7 @@ public class UpdatableAppsButtonAdapterAbstract extends ButtonAdapter {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                YalpStorePermissionManager permissionManager = new YalpStorePermissionManager(activity);
+                SinAppsPermissionManager permissionManager = new SinAppsPermissionManager(activity);
                 if (permissionManager.checkPermission()) {
                     activity.launchUpdateAll();
                 } else {
@@ -43,7 +43,7 @@ public class UpdatableAppsButtonAdapterAbstract extends ButtonAdapter {
                 }
             }
         });
-        if (((YalpStoreApplication) activity.getApplication()).isBackgroundUpdating()) {
+        if (((SinAppsApplication) activity.getApplication()).isBackgroundUpdating()) {
             setUpdating();
         } else if (!activity.getListedPackageNames().isEmpty()) {
             setReady();

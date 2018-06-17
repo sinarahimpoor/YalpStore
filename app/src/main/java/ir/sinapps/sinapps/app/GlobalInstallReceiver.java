@@ -50,7 +50,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         if (null != DetailsActivity.app && packageName.equals(DetailsActivity.app.getPackageName())) {
             updateDetails(actionIsInstall);
         }
-        ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall);
+        ((SinAppsApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall);
         if (!actionIsInstall) {
             return;
         }

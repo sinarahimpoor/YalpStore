@@ -23,7 +23,7 @@ import android.content.DialogInterface;
 import android.widget.EditText;
 
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.fragment.details.Review;
 import ir.sinapps.sinapps.app.task.playstore.ReviewAddTask;
 
@@ -32,7 +32,7 @@ public class UserReviewDialogBuilder extends DialogWrapper {
     private Review manager;
     private String packageName;
 
-    public UserReviewDialogBuilder(YalpStoreActivity activity, Review manager, String packageName) {
+    public UserReviewDialogBuilder(SinAppsModelActivity activity, Review manager, String packageName) {
         super(activity);
         this.manager = manager;
         this.packageName = packageName;

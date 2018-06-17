@@ -94,7 +94,7 @@ public class InstallerPrivileged extends InstallerBackground {
         }
         if (context.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) != PackageManager.PERMISSION_GRANTED) {
             Log.i(getClass().getSimpleName(), Manifest.permission.INSTALL_PACKAGES + " not granted");
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+            ((SinAppsApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             notifyAndToast(R.string.notification_not_privileged, R.string.pref_not_privileged, app);
             return false;
         }
@@ -107,7 +107,7 @@ public class InstallerPrivileged extends InstallerBackground {
         File apkFile = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         if (!apkFile.exists()) {
             Log.e(getClass().getSimpleName(), "Installation requested for apk " + apkFile.getAbsolutePath() + " which does not exist");
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+            ((SinAppsApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             sendBroadcast(app.getPackageName(), false);
             return;
         }
@@ -117,7 +117,7 @@ public class InstallerPrivileged extends InstallerBackground {
             pm.getClass().getMethod("installPackage", types).invoke(pm, Uri.fromFile(apkFile), new InstallObserver(app), INSTALL_REPLACE_EXISTING, BuildConfig.APPLICATION_ID);
         } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
             Log.e(getClass().getSimpleName(), "Could not start privileged installation: " + e.getClass().getName() + " " + e.getMessage());
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+            ((SinAppsApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             sendBroadcast(app.getPackageName(), false);
         }
     }

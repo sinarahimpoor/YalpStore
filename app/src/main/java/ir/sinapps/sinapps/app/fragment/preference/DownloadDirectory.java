@@ -30,7 +30,7 @@ import ir.sinapps.sinapps.app.ContextUtil;
 import ir.sinapps.sinapps.app.Paths;
 import ir.sinapps.sinapps.app.PreferenceActivity;
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStorePermissionManager;
+import ir.sinapps.sinapps.app.SinAppsPermissionManager;
 import ir.sinapps.sinapps.app.view.DialogWrapper;
 import ir.sinapps.sinapps.app.view.DialogWrapperAbstract;
 
@@ -52,7 +52,7 @@ public class DownloadDirectory extends Abstract {
         preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                YalpStorePermissionManager permissionManager = new YalpStorePermissionManager(activity);
+                SinAppsPermissionManager permissionManager = new SinAppsPermissionManager(activity);
                 if (!permissionManager.checkPermission()) {
                     permissionManager.requestPermission();
                 }

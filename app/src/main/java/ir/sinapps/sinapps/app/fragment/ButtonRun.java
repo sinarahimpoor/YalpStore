@@ -28,7 +28,7 @@ import android.view.View;
 
 import ir.sinapps.sinapps.app.DetailsActivity;
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreApplication;
+import ir.sinapps.sinapps.app.SinAppsApplication;
 import ir.sinapps.sinapps.app.model.App;
 
 public class ButtonRun extends Button {
@@ -62,7 +62,7 @@ public class ButtonRun extends Button {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private Intent getLaunchIntent() {
         Intent i = activity.getPackageManager().getLaunchIntentForPackage(app.getPackageName());
-        boolean isTv = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ((YalpStoreApplication) activity.getApplication()).isTv();
+        boolean isTv = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ((SinAppsApplication) activity.getApplication()).isTv();
         if (isTv) {
             Intent l = activity.getPackageManager().getLeanbackLaunchIntentForPackage(app.getPackageName());
             if (null != l) {

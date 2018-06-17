@@ -85,7 +85,7 @@ abstract public class ThemeManagerAbstract {
     }
 
     static private boolean isAmazonTv(Context context) {
-        return ((YalpStoreApplication) context.getApplicationContext()).isTv() && Build.MANUFACTURER.toLowerCase().contains("amazon");
+        return ((SinAppsApplication) context.getApplicationContext()).isTv() && Build.MANUFACTURER.toLowerCase().contains("amazon");
     }
 
     static boolean isWindowBackgroundDark(Context context) {

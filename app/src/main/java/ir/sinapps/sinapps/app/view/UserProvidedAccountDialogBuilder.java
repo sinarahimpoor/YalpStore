@@ -33,7 +33,7 @@ import ir.sinapps.sinapps.app.ContextUtil;
 import ir.sinapps.sinapps.app.PlayStoreApiAuthenticator;
 import ir.sinapps.sinapps.app.PreferenceUtil;
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.task.playstore.UserProvidedCredentialsTask;
 
 import java.util.ArrayList;
@@ -81,7 +81,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         ad.setNegativeButton(android.R.string.cancel, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                YalpStoreActivity.cascadeFinish();
+                SinAppsModelActivity.cascadeFinish();
                 activity.finish();
             }
         });

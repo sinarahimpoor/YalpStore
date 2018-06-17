@@ -21,17 +21,17 @@ package ir.sinapps.sinapps.app.fragment;
 
 import android.widget.TextView;
 
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.model.App;
 
 public abstract class Abstract {
 
-    protected YalpStoreActivity activity;
+    protected SinAppsModelActivity activity;
     protected App app;
 
     abstract public void draw();
 
-    public Abstract(YalpStoreActivity activity, App app) {
+    public Abstract(SinAppsModelActivity activity, App app) {
         this.activity = activity;
         this.app = app;
     }

@@ -25,15 +25,15 @@ import android.widget.ImageView;
 
 import ir.sinapps.sinapps.app.R;
 import ir.sinapps.sinapps.app.WishlistActivity;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
-import ir.sinapps.sinapps.app.YalpStoreApplication;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
+import ir.sinapps.sinapps.app.SinAppsApplication;
 import ir.sinapps.sinapps.app.fragment.Abstract;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.task.playstore.WishlistToggleTask;
 
 public class Wishlist extends Abstract {
 
-    public Wishlist(YalpStoreActivity activity, App app) {
+    public Wishlist(SinAppsModelActivity activity, App app) {
         super(activity, app);
     }
 
@@ -54,10 +54,10 @@ public class Wishlist extends Abstract {
         });
     }
 
-    static private void initWishlistButton(final YalpStoreActivity activity, final String packageName) {
+    static private void initWishlistButton(final SinAppsModelActivity activity, final String packageName) {
         ImageView wishlistButton = activity.findViewById(R.id.wishlist);
         wishlistButton.setVisibility(View.VISIBLE);
-        wishlistButton.setImageResource(YalpStoreApplication.wishlist.contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
+        wishlistButton.setImageResource(SinAppsApplication.wishlist.contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
         wishlistButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,14 +71,14 @@ public class Wishlist extends Abstract {
 
     static private class DetailsWishlistToggleTask extends WishlistToggleTask {
 
-        public DetailsWishlistToggleTask(YalpStoreActivity activity) {
+        public DetailsWishlistToggleTask(SinAppsModelActivity activity) {
             setContext(activity);
         }
 
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
-            initWishlistButton((YalpStoreActivity) context, packageName);
+            initWishlistButton((SinAppsModelActivity) context, packageName);
         }
     }
 }

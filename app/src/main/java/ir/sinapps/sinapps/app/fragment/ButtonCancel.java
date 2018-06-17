@@ -24,13 +24,13 @@ import android.view.View;
 
 import ir.sinapps.sinapps.app.DownloadState;
 import ir.sinapps.sinapps.app.R;
-import ir.sinapps.sinapps.app.YalpStoreActivity;
+import ir.sinapps.sinapps.app.SinAppsModelActivity;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.notification.CancelDownloadService;
 
 public class ButtonCancel extends Button {
 
-    public ButtonCancel(YalpStoreActivity activity, App app) {
+    public ButtonCancel(SinAppsModelActivity activity, App app) {
         super(activity, app);
     }
 

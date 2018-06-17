@@ -38,7 +38,7 @@ import ir.sinapps.sinapps.app.PreferenceUtil;
 import ir.sinapps.sinapps.app.R;
 import ir.sinapps.sinapps.app.UpdatableAppsActivity;
 import ir.sinapps.sinapps.app.UpdateAllReceiver;
-import ir.sinapps.sinapps.app.YalpStoreApplication;
+import ir.sinapps.sinapps.app.SinAppsApplication;
 import ir.sinapps.sinapps.app.model.App;
 import ir.sinapps.sinapps.app.notification.NotificationManagerWrapper;
 
@@ -101,7 +101,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
 
     private void process(Context context, List<App> apps) {
         boolean canInstallInBackground = PreferenceUtil.canInstallInBackground(context);
-        YalpStoreApplication application = (YalpStoreApplication) context.getApplicationContext();
+        SinAppsApplication application = (SinAppsApplication) context.getApplicationContext();
         application.clearPendingUpdates();
         for (App app: apps) {
             application.addPendingUpdate(app.getPackageName());
