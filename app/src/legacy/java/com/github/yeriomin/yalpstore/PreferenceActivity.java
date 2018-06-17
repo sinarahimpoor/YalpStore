@@ -17,11 +17,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore;
+package ir.sinapps.sinapps.app;
 
 import android.os.Bundle;
 
-import com.github.yeriomin.yalpstore.fragment.preference.AllPreferences;
+import ir.sinapps.sinapps.app.fragment.preference.AllPreferences;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 

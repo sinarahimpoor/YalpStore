@@ -127,7 +127,7 @@
         android:layout_height="48dp"
         android:visibility="gone" />
 
-    <com.github.yeriomin.yalpstore.widget.ExpansionPanel
+    <ir.sinapps.sinapps.app.widget.ExpansionPanel
         app:headerText="@string/details_changelog"
         android:id="@+id/changes_panel"
         android:visibility="gone"
@@ -144,9 +144,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
+    </ir.sinapps.sinapps.app.widget.ExpansionPanel>
 
-    <com.github.yeriomin.yalpstore.widget.ExpansionPanel
+    <ir.sinapps.sinapps.app.widget.ExpansionPanel
         app:headerText="@string/details_description"
         android:id="@+id/description_panel"
         android:visibility="gone"
@@ -187,7 +187,7 @@
             android:orientation="vertical"
             android:paddingTop="10dip" />
 
-    </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
+    </ir.sinapps.sinapps.app.widget.ExpansionPanel>
 
     <ViewStub
         android:layout_width="match_parent"

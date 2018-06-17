@@ -17,12 +17,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore;
+package ir.sinapps.sinapps.app;
 
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.github.yeriomin.yalpstore.model.App;
+import ir.sinapps.sinapps.app.model.App;
 
 class OnAppClickListener implements AdapterView.OnItemClickListener {
 

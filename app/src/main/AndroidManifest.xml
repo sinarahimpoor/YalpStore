@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.github.yeriomin.yalpstore"
+          package="ir.sinapps.sinapps.app"
           android:installLocation="internalOnly" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -30,9 +30,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/paths" />
         </provider>
-        <receiver android:name="com.github.yeriomin.yalpstore.UpdateChecker" />
+        <receiver android:name=".UpdateChecker" />
         <receiver
-            android:name="com.github.yeriomin.yalpstore.BootReceiver"
+            android:name=".BootReceiver"
             android:enabled="true"
             android:exported="true" >
             <intent-filter>

@@ -5,7 +5,7 @@
               android:layout_height="match_parent">
 
     <fragment
-        android:name="com.github.yeriomin.yalpstore.fragment.preference.PreferenceFragment"
+        android:name="ir.sinapps.sinapps.app.fragment.preference.PreferenceFragment"
         android:id="@+id/preferences_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

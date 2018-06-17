@@ -13,7 +13,7 @@ android {
         return stdout.toString().trim()
     }
     defaultConfig {
-        applicationId "com.github.yeriomin.yalpstore"
+        applicationId "ir.sinapps.sinapps.app"
         minSdkVersion 14
         targetSdkVersion 27
         versionCode 42

@@ -17,12 +17,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore.view;
+package ir.sinapps.sinapps.app.view;
 
 import android.view.View;
 import android.widget.Button;
 
-import com.github.yeriomin.yalpstore.R;
+import ir.sinapps.sinapps.app.R;
 
 public class UpdatableAppsButtonAdapter extends UpdatableAppsButtonAdapterAbstract {
 

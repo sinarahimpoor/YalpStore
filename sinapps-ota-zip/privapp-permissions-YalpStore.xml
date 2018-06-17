@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <permissions>
-    <privapp-permissions package="com.github.yeriomin.yalpstore">
+    <privapp-permissions package="ir.sinapps.sinapps.app">
         <permission name="android.permission.INSTALL_PACKAGES"/>
     </privapp-permissions>
 </permissions>

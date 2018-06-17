@@ -10,8 +10,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 
-import com.github.yeriomin.yalpstore.BlackWhiteListManager;
-import com.github.yeriomin.yalpstore.R;
+import ir.sinapps.sinapps.app.BlackWhiteListManager;
+import ir.sinapps.sinapps.app.R;
 
 import java.util.Collections;
 import java.util.HashSet;

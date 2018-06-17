@@ -17,11 +17,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore.fragment.details;
+package ir.sinapps.sinapps.app.fragment.details;
 
-import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.fragment.Abstract;
-import com.github.yeriomin.yalpstore.model.App;
+import ir.sinapps.sinapps.app.DetailsActivity;
+import ir.sinapps.sinapps.app.fragment.Abstract;
+import ir.sinapps.sinapps.app.model.App;
 
 public class Background extends Abstract {
 

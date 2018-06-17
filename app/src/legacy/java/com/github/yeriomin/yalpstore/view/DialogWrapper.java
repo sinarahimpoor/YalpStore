@@ -17,7 +17,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore.view;
+package ir.sinapps.sinapps.app.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -26,7 +26,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ListAdapter;
 
-import com.github.yeriomin.yalpstore.ContextUtil;
+import ir.sinapps.sinapps.app.ContextUtil;
 
 public class DialogWrapper extends DialogWrapperAbstract {
 
